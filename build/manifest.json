@@ -1,0 +1,11 @@
+{
+  "assets\\author.jpg": "assets/d9a4bd15.author.jpg",
+  "chunks.js": "./common/chunks.bundle.js",
+  "chunks.js.map": "./common/chunks.bundle.js.map",
+  "main.css": "./css/main.2f7c40246d514bad7a933841aa1a1ba8.css",
+  "main.css.map": "./css/main.2f7c40246d514bad7a933841aa1a1ba8.css.map",
+  "main.js": "./js/main.a868c20f.js",
+  "main.js.map": "./js/main.a868c20f.js.map",
+  "vendor.js": "./js/vendor.a868c20f.js",
+  "vendor.js.map": "./js/vendor.a868c20f.js.map"
+}

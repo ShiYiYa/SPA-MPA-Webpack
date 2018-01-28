@@ -10,4 +10,5 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
+/**以下为热加载配置 */
 module.hot.accept();

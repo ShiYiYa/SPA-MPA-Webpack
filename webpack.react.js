@@ -1,9 +1,9 @@
 /*
 *
-*  多入口配置,在17，39-51行添加入口和模板，并在入口底部添加热加载配置
-*  build前需要删除入口底部热加载配置，
+* React单页面配置，其实只是不用依赖chunks的common
+*  单入口文件时候不能把引用多次的模块打印到commonChunkPlugin中
+*  所以应该可以删除28-29的插件了
 */
-
 const webpack = require('webpack');
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -15,7 +15,6 @@ var ManifestPlugin = require('webpack-manifest-plugin');
 module.exports = {
   entry: {
     main: './src/index.js',//业务代码 
-    /* home: './src/home.js', */ //多入口配置，plugins下面还有一个:D
     vendor: ['react', 'react-dom']//第三方库
   },
   output: {
@@ -28,8 +27,7 @@ module.exports = {
     new ManifestPlugin(),//生成项目清单
     new webpack.HashedModuleIdsPlugin(),//避免common的hash更改而重新打包
     new webpack.optimize.CommonsChunkPlugin({
-      /* name: ['react','react-dom'], *///把入口处的vendor分别打包到一个react-chunk和react-dom-chunks中,即45行需引入所以的chunks
-      name: 'chunks',//把入口处的vendor分别打包到一个chunks中
+      name: 'vendor',//把入口处的vendor分别打包到一个独立的chunk中
       filename: './common/[name].bundle.js',
       minChunks: 3,//多个页面引入该资源才被纳入公共文件。3~5
     }),
@@ -42,16 +40,7 @@ module.exports = {
       title: 'my main',
       template: 'src/index.html',
       filename: 'index.html',
-      /* chunks: ['main','react','react-dom'] *///需引入公共文件,被分离出去的代码（代码分离）
-      chunks: ['main','chunks']
     }),
-    /* new HtmlWebpackPlugin({//多入口配置
-      favicon: '',
-      title: 'home',
-      template: 'src/home.html',
-      filename: 'home.html',
-       chunks: ['home', 'common']
-  }), */
     new UglifyJSPlugin({//删除掉未被引用的 export
       sourceMap: true
     })
