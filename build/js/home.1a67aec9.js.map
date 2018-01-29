@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/js/home.js"],"names":["__webpack_require__","console","log"],"mappings":"oDAAAA,EAAA,QACAC,QAAQC,IAAI","file":"./js/home.1a67aec9.js","sourcesContent":["import './common';\r\nconsole.log('home');\n\n\n// WEBPACK FOOTER //\n// ./src/js/home.js"],"sourceRoot":""}
