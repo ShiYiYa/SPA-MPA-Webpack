@@ -1,7 +1,7 @@
 # Preview
-~~使用webpack开发react项目~~  
+~~使用webpack开发SPA（react）项目~~  
 请使用[官方脚手架](https://github.com/facebook/create-react-app)**很强大**  
-使用webpack开发多页面，单页面项目。
+使用webpack开发多页面MPA，单页面项目SPA。
 单：webpack.dev.js webpack.prod.js
 多：webpack.react.dev.js webpack.react.prod.js
 
