@@ -1,5 +1,5 @@
 /**
- * 多页面开发环境
+ *  单页面React开发环境
  */
 const webpack = require('webpack');
 const path = require('path');
@@ -9,8 +9,7 @@ module.exports = {
   entry: {
     //热替换入口
     hot: 'react-hot-loader/patch',
-    main: './src/js/index.js',
-    home: './src/js/home.js'
+    index: './src/js/index.js',
   },
   output: {
     filename: './js/[name].[hash:8].js',
@@ -21,15 +20,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),//热替换
     new HtmlWebpackPlugin({
       title: 'My main',
-      filename: 'index.html',
       template: './src/templates/index.html',
-      chunks: ['main']
-    }),
-    new HtmlWebpackPlugin({
-      title: 'My home',
-      filename: 'home.html',
-      template: './src/templates/home.html',
-      chunks: ['home']
     })
   ],
   //源地图

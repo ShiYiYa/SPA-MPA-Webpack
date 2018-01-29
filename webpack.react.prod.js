@@ -1,8 +1,6 @@
 /*
 *
-* React单页面配置，其实只是不用依赖chunks的common
-*  单入口文件时候不能把引用多次的模块打印到commonChunkPlugin中
-*  所以应该可以删除28-29的插件了
+* React单页面配置
 */
 const webpack = require('webpack');
 const path = require('path');
@@ -14,22 +12,21 @@ var ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
   entry: {
-    main: './src/index.js',//业务代码 
+    main: './src/js/index.js',//业务代码 
     vendor: ['react', 'react-dom']//第三方库
   },
   output: {
     filename: './js/[name].[hash:8].js',
     path: path.resolve(__dirname, 'build'),
-    //publicPath: '/'
   },
   devtool: 'source-map',
   plugins: [
     new ManifestPlugin(),//生成项目清单
     new webpack.HashedModuleIdsPlugin(),//避免common的hash更改而重新打包
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',//把入口处的vendor分别打包到一个独立的chunk中
+      names: ['common','vendor'],
       filename: './common/[name].bundle.js',
-      minChunks: 3,//多个页面引入该资源才被纳入公共文件。3~5
+      minChunks: 2,//多个页面引入该资源才被纳入公共文件。3~5
     }),
     new ExtractTextPlugin({//分离css
       filename: "./css/[name].[contenthash].css",
@@ -37,9 +34,10 @@ module.exports = {
   }),
     new CleanWebpackPlugin(['build']),
     new HtmlWebpackPlugin({//创建与js/css同步的index.html
-      title: 'my main',
-      template: 'src/index.html',
+      title: 'My React Main',
+      template: './src/templates/index.html',
       filename: 'index.html',
+      chunks: ['main','common','vendor']
     }),
     new UglifyJSPlugin({//删除掉未被引用的 export
       sourceMap: true

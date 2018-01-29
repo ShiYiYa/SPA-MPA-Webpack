@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/js/common.js"],"names":["a"],"mappings":"qGAEaA,IAAE","file":"./common/common.bundle.js","sourcesContent":["//测试chunks，代码分离\r\n\r\nexport const a=1;\n\n\n// WEBPACK FOOTER //\n// ./src/js/common.js"],"sourceRoot":""}

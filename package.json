@@ -37,7 +37,8 @@
     "watch": "webpack --progress --watch",
     "start": "webpack-dev-server --progress --colors --config ./webpack.dev.js",
     "build": "webpack --progress --color --config webpack.prod.js",
-    "react": "webpack --progress --color --config webpack.react.js",
+    "startreact": "webpack-dev-server --progress --colors --config ./webpack.react.dev.js",
+    "buildreact": "webpack --progress --color --config webpack.react.prod.js",
     "serve": "serve -s build"
   },
   "dependencies": {

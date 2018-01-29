@@ -1,7 +1,8 @@
-import './index.css';
+import '../css/index.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './author.jpg';
+import '../img/author.jpg';
+import './common';
 
 const Hello = () =><h1>The First React Webpack.</h1>;
 
