@@ -1,8 +1,8 @@
 # Preview
 ~~使用webpack开发SPA（react）项目~~  
 请使用[官方脚手架](https://github.com/facebook/create-react-app)**很强大**  
-使用webpack开发多页面MPA，单页面项目SPA。
-单：webpack.dev.js webpack.prod.js
+使用webpack开发多页面MPA，单页面项目SPA。  
+单：webpack.dev.js webpack.prod.js  
 多：webpack.react.dev.js webpack.react.prod.js
 
 ## 项目结构
@@ -25,15 +25,15 @@
 ```
 
 ## 使用方法
-```yarn install``` or ```npm install```  
+```git clone https://github.com/ShiYiYa/SPA-MPA-Webpack.git```  
+```yarn install```   
 会自动下载React开发和生产所需要的依赖包。  
-```yarn build``` or ```npm build```  
+```yarn build```  
 打包文件，即最终产品。打包后目录为build文件夹。  
 ```yarn serve```  
 运行,打开浏览器localhost:5000将看到最终效果
 
 ## 包含
-react：应该官方脚手架有的功能都差不多，只是有很多不同(奇怪)之处。XD
 ```
 --- sass-loader 
 --- post-css css预处理 
@@ -45,3 +45,7 @@ react：应该官方脚手架有的功能都差不多，只是有很多不同(�
 --- CommonsChunkPlugin 代码拆分
 --- HotModuleReplacementPlugin 热替换
 ```
+
+## 问题
+
+home未使用vendor(react,react-dom),却也引入了,删掉会报错。

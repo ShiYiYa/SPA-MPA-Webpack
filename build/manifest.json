@@ -2,12 +2,14 @@
   "assets\\author.jpg": "assets/d9a4bd15.author.jpg",
   "common.js": "./common/common.bundle.js",
   "common.js.map": "./common/common.bundle.js.map",
-  "home.js": "./js/home.0ceef369.js",
-  "home.js.map": "./js/home.0ceef369.js.map",
+  "home.css": "./css/home.40cc70f1a3f2ed0f51f30857eb735a1c.css",
+  "home.css.map": "./css/home.40cc70f1a3f2ed0f51f30857eb735a1c.css.map",
+  "home.js": "./js/home.171431bf.js",
+  "home.js.map": "./js/home.171431bf.js.map",
   "main.css": "./css/main.2f7c40246d514bad7a933841aa1a1ba8.css",
   "main.css.map": "./css/main.2f7c40246d514bad7a933841aa1a1ba8.css.map",
-  "main.js": "./js/main.0ceef369.js",
-  "main.js.map": "./js/main.0ceef369.js.map",
+  "main.js": "./js/main.171431bf.js",
+  "main.js.map": "./js/main.171431bf.js.map",
   "vendor.js": "./common/vendor.bundle.js",
   "vendor.js.map": "./common/vendor.bundle.js.map"
 }

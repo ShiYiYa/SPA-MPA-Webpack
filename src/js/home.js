@@ -1,4 +1,5 @@
 import sayHello from './common';
+import '../css/home.css';
 
 sayHello();
 var node=document.createElement("h1");

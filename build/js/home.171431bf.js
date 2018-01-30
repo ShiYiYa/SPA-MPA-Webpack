@@ -1,0 +1,2 @@
+webpackJsonp([2],{lONR:function(e,t){},oa3N:function(e,t,o){"use strict";var d,n=o("g5qz"),a=(d=n)&&d.__esModule?d:{default:d};o("lONR"),(0,a.default)();var c=document.createElement("h1"),l=document.createTextNode("Home");c.appendChild(l),document.getElementById("root").appendChild(c)}},["oa3N"]);
+//# sourceMappingURL=home.171431bf.js.map

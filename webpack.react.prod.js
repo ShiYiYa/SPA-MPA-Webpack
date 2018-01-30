@@ -1,6 +1,6 @@
 /*
 *
-* React单页面配置
+* React单页面生产环境配置
 */
 const webpack = require('webpack');
 const path = require('path');
