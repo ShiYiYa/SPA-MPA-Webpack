@@ -1,0 +1,6 @@
+h1{
+  text-align: center;
+  color: blueviolet;
+  transform: rotate(-180deg);/*测试 postcss-autoprefixer*/
+  background-image: url('../../img/hello.png');/*图片测试*/
+}

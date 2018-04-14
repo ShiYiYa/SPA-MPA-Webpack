@@ -1,6 +1,0 @@
-#root{
-  background-color: yellow;
-  background: url(../img/author.jpg) ;
-  background-size: contain;
-  text-size-adjust: 100%; /*测试post-css*/
-}
