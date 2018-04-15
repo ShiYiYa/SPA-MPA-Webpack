@@ -1,8 +1,7 @@
-import axios from 'axios';
 import React from 'react';
 import ReactDom from 'react-dom';
 import App from './component/app';
-import { test } from './notUse'
+import { test } from './notUse';
 
-test()
+test();
 ReactDom.render(<App/>, document.getElementById('root'));
