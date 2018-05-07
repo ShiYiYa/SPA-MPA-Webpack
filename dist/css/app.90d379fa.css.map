@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/component/app.css"],"names":[],"mappings":"AAAA,GAAG,kBAAkB,cAAc,kCAAkC,0BAA0B,mD","file":"./css/app.90d379fa.css","sourcesContent":["h1{text-align:center;color:#8a2be2;-webkit-transform:rotate(-180deg);transform:rotate(-180deg);background-image:url(../static/hello.4a0abb7b.png)}"],"sourceRoot":""}

@@ -4,7 +4,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const webpack = require('webpack');
 
-module.exports = merge(baseWebpackConfig,{
+module.exports = merge(baseWebpackConfig, {
   mode: 'production',
   devtool: 'source-map',
   optimization: {
@@ -21,24 +21,31 @@ module.exports = merge(baseWebpackConfig,{
           chunks: "initial",
           minChunks: 2
         },
-      vendor: {
-        test: /node_modules/,
-        filename: './vendor/[name].[hash:8].js',
-        name: "vendor",
-        chunks: "initial",
-        minChunks: 1
-      },
-      /* styles: {
-        name: 'styles',
-        //filename: './css/[name].[hash:8].js',
-        test: /\.css$/,
-        chunks: 'all',
-        enforce: true
-      } */
-      //用这个需要加chunk,webpack5 后可能启用
+        vendor: {
+          test: /node_modules/,
+          filename: './vendor/[name].[hash:8].js',
+          name: "vendor",
+          chunks: "initial",
+          minChunks: 1,
+          priority: 10
+        },
+        jq: {
+          test: /\.js$/,
+          filename: './vendor/[name].[hash:8].js',
+          name: "jq",
+          chunks: "initial",
+          enforce: true,
+        }
+        /* styles: {
+          name: 'styles',
+          //filename: './css/[name].[hash:8].js',
+          test: /\.css$/,
+          chunks: 'all',
+          enforce: true
+        } */
+      }
     }
-  }
-},
+  },
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new webpack.DefinePlugin({

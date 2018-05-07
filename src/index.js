@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import App from './component/app';
-import { test } from './notUse';
+import { jq } from './jq';
 
-test();
-ReactDom.render(<App/>, document.getElementById('root'));
+jq();
+ReactDom.render(<App />, document.getElementById('root'));
