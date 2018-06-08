@@ -1,3 +1,8 @@
+
+## 路径相关 paths.js
+## todolist
+- auto chunk
+
 # webpack4 升级手册
 webpack4 更新了很久了，也更新了些许东西；默认 **0** 配置，CommonsChunkPlugin 等插件的废弃等等;  
 可惜文档感觉不是很全，但该升级还是得升级么；秉承着用新不用旧的原则，踩了一波坑比在此记录下来。

@@ -6,8 +6,8 @@
   "author": "godme",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.dev.js --open --progress  --colors ",
-    "build": "cross-env NODE_ENV=production webpack --config webpack.prod.js --progress --colors"
+    "start": "cross-env webpack-dev-server --config config/webpack.dev.js --progress --colors ",
+    "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js --progress --colors"
   },
   "dependencies": {
     "axios": "^0.18.0",
