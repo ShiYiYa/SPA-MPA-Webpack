@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/component/app.css"],"names":[],"mappings":"AAAA,GAAG,kBAAkB,cAAc,gCAAgC,wBAAwB,mD","file":"css/app.db32e0fb.css","sourcesContent":["h1{text-align:center;color:#8a2be2;-webkit-transform:rotate(1turn);transform:rotate(1turn);background-image:url(../static/hello.4a0abb7b.png)}"],"sourceRoot":""}

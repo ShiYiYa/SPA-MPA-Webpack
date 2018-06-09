@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const paths = require("./paths");
 
 module.exports = {
-  entry: paths.appEntrys,
+  entry: paths.appEntry,
   output: {
     path: paths.appBuild,
     filename: paths.jsFilename,
@@ -19,35 +19,6 @@ module.exports = {
     alias: {}
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      path: paths.appBuild,
-      title: "app",
-      filename: "index.html",
-      template: paths.appHtml,
-      chunks: ["vendor", "app", "jq"],
-      hash: true,
-      inject: true
-    }),
-    /* (function() {
-      return new HtmlWebpackPlugin({
-        path: paths.appBuild,
-        title: "test",
-        filename: "test.html",
-        template: paths.appHtml,
-        chunks: ["about", "jq"],
-        hash: true,
-        inject: true
-      });
-    })(), */
-    new HtmlWebpackPlugin({
-      path: paths.appBuild,
-      title: "about",
-      filename: "about.html",
-      template: paths.appHtml,
-      chunks: ["about", "jq"],
-      hash: true,
-      inject: true
-    }),
     new MiniCssExtractPlugin({
       filename: paths.cssFilename
       //chunkFilename: "[name].css"
@@ -75,7 +46,14 @@ module.exports = {
               minimize: true
             }
           },
-          { loader: "postcss-loader" }
+          {
+            loader: "postcss-loader",
+            options: {
+              config: {
+                path: path.resolve(__dirname, "../ postcss.config")
+              }
+            }
+          }
         ]
       },
       {
