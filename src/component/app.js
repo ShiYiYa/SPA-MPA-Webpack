@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDom from "react-dom";
 import "./app.css";
-import img from "../../img/hello.png";
+import img from "../img/1.jpg";
 
 const App = () => (
   <div>

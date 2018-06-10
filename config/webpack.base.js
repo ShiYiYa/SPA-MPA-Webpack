@@ -22,7 +22,8 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: paths.cssFilename
       //chunkFilename: "[name].css"
-    })
+    }),
+    ...paths.entryAppHtml.map(i => new HtmlWebpackPlugin(i))
   ],
   module: {
     rules: [

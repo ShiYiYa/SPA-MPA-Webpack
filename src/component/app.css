@@ -1,6 +1,11 @@
-h1{
+h1 {
   text-align: center;
   color: blueviolet;
-  transform: rotate(360deg);/*测试 postcss-autoprefixer*/
-  background-image: url('../../img/hello.png');/*图片测试*/
+  transform: rotate(360deg); /*测试 postcss-autoprefixer*/
+  background-image: url("../img/1.jpg"); /*图片测试*/
+}
+#root img {
+  display: block;
+  max-width: 70%;
+  margin: 0 auto;
 }

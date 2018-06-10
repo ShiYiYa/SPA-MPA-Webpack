@@ -7,11 +7,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const baseWebpackConfig = require("./webpack.base.js");
 const paths = require("./paths");
 
-const shouldUseSourceMap = true;
-
 module.exports = merge(baseWebpackConfig, {
   mode: "production",
-  devtool: shouldUseSourceMap ? "source-map" : false,
+  devtool: paths.shouldUseSourceMap ? "source-map" : false,
   optimization: {
     minimize: true,
     splitChunks: {

@@ -3,27 +3,11 @@ const fs = require("fs");
 const url = require("url");
 const glob = require("glob");
 
-const appDirectory = fs.realpathSync(process.cwd());
-const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
-
-/**
- * Get mult Entry
- *
- * @param {*} appEntry
- * @returns
- */
-const resolveAppEntry = appEntry => {
-  let entry = {};
-  for (key in appEntry) {
-    Object.assign(entry, { [key]: resolveApp(appEntry[key]) });
-  }
-  return entry;
-};
-
 const envPublicUrl = "./";
 const jsFilename = "js/[name].[contenthash:8].js";
 const cssFilename = "css/[name].[contenthash:8].css";
 const chunkFilename = "js/[name].[contenthash:8].chunk.js";
+const shouldUseSourceMap = true;
 const minify = {
   removeComments: true,
   collapseWhitespace: true,
@@ -36,6 +20,9 @@ const minify = {
   minifyCSS: true,
   minifyURLs: true
 };
+
+const appDirectory = fs.realpathSync(process.cwd());
+const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 function ensureSlash(path, needsSlash) {
   const hasSlash = path.endsWith("/");
@@ -56,6 +43,20 @@ function getServedPath(appPackageJson) {
     envPublicUrl || (publicUrl ? url.parse(publicUrl).pathname : "/");
   return ensureSlash(servedUrl, true);
 }
+
+/**
+ * Get mult Entry
+ *
+ * @param {*} appEntry
+ * @returns
+ */
+const resolveAppEntry = appEntry => {
+  let entry = {};
+  for (key in appEntry) {
+    Object.assign(entry, { [key]: resolveApp(appEntry[key]) });
+  }
+  return entry;
+};
 
 /**
  * auto new html
@@ -95,9 +96,10 @@ module.exports = {
   //appIndexJs: resolveApp("src/index.js"),
   entryAppHtml: getAppEntryHtml("./src/view/*.html"),
   appEntry: resolveAppEntry({
-    app: "src/js/app.js",
+    index: "src/js/index.js",
     about: "src/js/about.js"
   }),
+  shouldUseSourceMap,
   appPackageJson: resolveApp("package.json"),
   appSrc: resolveApp("src"),
   yarnLockFile: resolveApp("yarn.lock"),

@@ -1,7 +1,7 @@
 {
-  "name": "migration-guide-for-webpck4",
+  "name": "webpack-multiple-entry-config",
   "version": "1.0.0",
-  "description": "migration-guide-for-webpck4",
+  "description": "webpack-multiple-entry-config",
   "main": "index.js",
   "author": "godme",
   "license": "MIT",
@@ -10,7 +10,6 @@
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js --progress --colors"
   },
   "dependencies": {
-    "axios": "^0.18.0",
     "react": "^16.3.1",
     "react-dom": "^16.3.1"
   },
