@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/lib/jq.js"],"names":["jq","console","log"],"mappings":"0IAAgBA,GAAT,WACLC,QAAQC,IAAI","file":"commons/commons.df432138.js","sourcesContent":["export function jq() {\r\n  console.log(\"i'm jq\");\r\n}\r\n"],"sourceRoot":""}

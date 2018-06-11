@@ -64,7 +64,7 @@ module.exports = {
             loader: "url-loader",
             options: {
               limit: "1024",
-              name: "[name].[contenthash:8].[ext]",
+              name: "[name].[hash:8].[ext]",
               outputPath: "./static/"
             }
           }

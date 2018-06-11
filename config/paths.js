@@ -47,7 +47,7 @@ function getServedPath(appPackageJson) {
 const resolveAppEntry = appEntry => {
   let entries = {};
   for (key in appEntry) {
-    Object.assign(entry, { [key]: resolveApp(appEntry[key]) });
+    Object.assign(entries, { [key]: resolveApp(appEntry[key]) });
   }
   return entries;
 };
@@ -66,7 +66,7 @@ function getAppHtmlEntry(appHtmlEntry) {
     entries.push({
       filename: basename + ".html",
       template: entry,
-      chunks: [basename, "vendor", "commons"], ///////////// ???????
+      chunks: [basename, "vendor", "commons"], //// 如何按需引入 chunks
       minify: isMinify
     });
   });
