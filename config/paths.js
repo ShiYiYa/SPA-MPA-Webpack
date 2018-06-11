@@ -44,29 +44,17 @@ function getServedPath(appPackageJson) {
   return ensureSlash(servedUrl, true);
 }
 
-/**
- * Get mult Entry
- *
- * @param {*} appEntry
- * @returns
- */
 const resolveAppEntry = appEntry => {
-  let entry = {};
+  let entries = {};
   for (key in appEntry) {
     Object.assign(entry, { [key]: resolveApp(appEntry[key]) });
   }
-  return entry;
+  return entries;
 };
 
-/**
- * auto new html
- *
- * @param {*} htmlPath
- * @returns
- */
-function getAppEntryHtml(htmlPath) {
+function getAppHtmlEntry(appHtmlEntry) {
   let entries = [];
-  glob.sync(htmlPath).forEach(function(entry) {
+  glob.sync(appHtmlEntry).forEach(function(entry) {
     let basename = path.basename(entry, path.extname(entry)),
       pathname = path.dirname(entry);
     (fileDir = pathname
@@ -94,7 +82,7 @@ module.exports = {
   //appPublic: resolveApp("public"),
   //appHtml: resolveApp("index.html"),
   //appIndexJs: resolveApp("src/index.js"),
-  entryAppHtml: getAppEntryHtml("./src/view/*.html"),
+  entryAppHtml: getAppHtmlEntry("./src/view/*.html"),
   appEntry: resolveAppEntry({
     index: "src/js/index.js",
     about: "src/js/about.js"

@@ -19,7 +19,7 @@ module.exports = merge(baseWebpackConfig, {
       cacheGroups: {
         default: false,
         commons: {
-          filename: "commons/[name].[hash:8].js",
+          filename: "commons/[name].[contenthash:8].js",
           name: "commons",
           chunks: "initial",
           minChunks: 2,
@@ -27,7 +27,7 @@ module.exports = merge(baseWebpackConfig, {
         },
         vendor: {
           test: /[\\/]node_modules[\\/]/,
-          filename: "vendor/[name].[hash:8].js",
+          filename: "vendor/[name].[contenthash:8].js",
           name: "vendor",
           chunks: "all",
           minChunks: 1,
@@ -36,7 +36,7 @@ module.exports = merge(baseWebpackConfig, {
         }
         /* styles: {
           name: 'styles',
-          //filename: 'css/[name].[hash:8].js',
+          //filename: 'css/[name].[contenthash:8].js',
           test: /\.css$/,
           chunks: 'all',
           enforce: true
