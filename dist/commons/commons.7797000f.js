@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[0],[,function(e,o,n){"use strict";Object.defineProperty(o,"__esModule",{value:!0}),o.jq=function(){console.log("i'm jq")}}]]);
-//# sourceMappingURL=commons.7797000f.js.map

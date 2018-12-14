@@ -1,9 +1,11 @@
 ## 路径相关 paths.js
 
-## todolist
+根据 `/src/view/(*).html` 确定入口 `{(*):/src/js/(*).js}`。
+如需添加 `cdn` ，在 `package.js` 添加 `{homepage: 'https://your-cdn-url'}` 字段。
 
-- auto chunk
-- **如何按需引入 chunks ?????**
+webpack 在多页面，按需引入还没有好的解决方案 可能要手动设置
+
+![](./127.0.0.1_8888.png)
 
 ## tree
 

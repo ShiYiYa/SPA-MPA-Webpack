@@ -1,13 +1,13 @@
-const path = require("path");
-const fs = require("fs");
-const url = require("url");
-const glob = require("glob");
+const path = require('path')
+const fs = require('fs')
+const url = require('url')
+const glob = require('glob')
 
-const envPublicUrl = "./";
-const jsFilename = "js/[name].[contenthash:8].js";
-const cssFilename = "css/[name].[contenthash:8].css";
-const chunkFilename = "js/[name].[contenthash:8].chunk.js";
-const shouldUseSourceMap = true;
+const envPublicUrl = './'
+const jsFilename = 'js/[name].[contenthash:8].js'
+const cssFilename = 'css/[name].[contenthash:8].css'
+const chunkFilename = 'js/[name].[contenthash:8].chunk.js'
+const shouldUseSourceMap = true
 const minify = {
   removeComments: true,
   collapseWhitespace: true,
@@ -19,82 +19,86 @@ const minify = {
   minifyJS: true,
   minifyCSS: true,
   minifyURLs: true
-};
+}
 
-const appDirectory = fs.realpathSync(process.cwd());
-const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
+const appDirectory = fs.realpathSync(process.cwd())
+const resolveApp = relativePath => path.resolve(appDirectory, relativePath)
 
 function ensureSlash(path, needsSlash) {
-  const hasSlash = path.endsWith("/");
+  const hasSlash = path.endsWith('/')
   if (hasSlash && !needsSlash) {
-    return path.substr(path, path.length - 1);
+    return path.substr(path, path.length - 1)
   } else if (!hasSlash && needsSlash) {
-    return `${path}/`;
+    return `${path}/`
   } else {
-    return path;
+    return path
   }
 }
 const getPublicUrl = appPackageJson =>
-  envPublicUrl || require(appPackageJson).homepage;
+  envPublicUrl || require(appPackageJson).homepage
 
 function getServedPath(appPackageJson) {
-  const publicUrl = getPublicUrl(appPackageJson);
+  const publicUrl = getPublicUrl(appPackageJson)
   const servedUrl =
-    envPublicUrl || (publicUrl ? url.parse(publicUrl).pathname : "/");
-  return ensureSlash(servedUrl, true);
+    envPublicUrl || (publicUrl ? url.parse(publicUrl).pathname : '/')
+  return ensureSlash(servedUrl, true)
 }
 
 const resolveAppEntry = appEntry => {
-  let entries = {};
+  let entries = {}
   for (key in appEntry) {
-    Object.assign(entries, { [key]: resolveApp(appEntry[key]) });
+    Object.assign(entries, { [key]: resolveApp(appEntry[key]) })
   }
-  return entries;
-};
+  return entries
+}
 
-function getAppHtmlEntry(appHtmlEntry) {
-  let entries = [];
+const chunk = {
+  a: [],
+  b: []
+}
+
+// 根据 /src/view/(*).html 确定入口对应 /src/js/(*).js
+function getAppEntry(appHtmlEntry) {
+  let tplEntries = [],
+    jsEntries = {}
   glob.sync(appHtmlEntry).forEach(function(entry) {
     let basename = path.basename(entry, path.extname(entry)),
-      pathname = path.dirname(entry);
-    (fileDir = pathname
-      .split("/")
+      pathname = path.dirname(entry)
+    ;(fileDir = pathname
+      .split('/')
       .splice(2)
-      .join("")),
-      (isMinify = process.env.NODE_ENV === "production" ? minify : {});
-    console.log(entry, basename, pathname, fileDir);
-    entries.push({
-      filename: basename + ".html",
+      .join('')),
+      (isMinify = process.env.NODE_ENV === 'production' ? minify : {})
+    console.log(entry, basename, pathname, fileDir)
+    tplEntries.push({
+      filename: basename + '.html',
       template: entry,
-      chunks: [basename, "vendor", "commons"], //// 如何按需引入 chunks
+      chunks: [basename, 'vendor', 'commons'], //// 如何按需引入 chunks
       minify: isMinify
-    });
-  });
-  return entries;
+    })
+    Object.assign(jsEntries, {
+      [basename]: resolveApp(`./src/js/${basename}.js`)
+    })
+  })
+  return { tplEntries, jsEntries }
 }
 
 module.exports = {
   appRoot: appDirectory,
-  appBuild: resolveApp("dist"),
+  appBuild: resolveApp('dist'),
   jsFilename,
   cssFilename,
   chunkFilename,
-  //appPublic: resolveApp("public"),
-  //appHtml: resolveApp("index.html"),
-  //appIndexJs: resolveApp("src/index.js"),
-  entryAppHtml: getAppHtmlEntry("./src/view/*.html"),
-  appEntry: resolveAppEntry({
-    index: "src/js/index.js",
-    about: "src/js/about.js"
-  }),
+  entryAppHtml: getAppEntry('./src/view/*.html').tplEntries,
+  appEntry: getAppEntry('./src/view/*.html').jsEntries,
   shouldUseSourceMap,
-  appPackageJson: resolveApp("package.json"),
-  appSrc: resolveApp("src"),
-  yarnLockFile: resolveApp("yarn.lock"),
-  appNodeModules: resolveApp("node_modules"),
-  publicUrl: getPublicUrl(resolveApp("package.json")),
-  servedPath: getServedPath(resolveApp("package.json"))
-};
+  appPackageJson: resolveApp('package.json'),
+  appSrc: resolveApp('src'),
+  yarnLockFile: resolveApp('yarn.lock'),
+  appNodeModules: resolveApp('node_modules'),
+  publicUrl: getPublicUrl(resolveApp('package.json')),
+  servedPath: getServedPath(resolveApp('package.json'))
+}
 
 /* function getEntry(globPath) {
   let entries = {};
